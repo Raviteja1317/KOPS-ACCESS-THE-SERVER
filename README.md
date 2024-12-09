@@ -227,6 +227,8 @@ targetPort: 80
 
 Creation of the bucket
 
+![Screenshot (24)](https://github.com/user-attachments/assets/588742cf-a7b2-417c-963d-e95e3d19b037)
+
 
 Until we give the command came to the ready state for worker node and master node
 
