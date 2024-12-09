@@ -92,3 +92,151 @@ CLUSTER INFORMATION
 LIST THE NODES
 
 29. kubectl get nodes --show-labels (UNTILL YOU WILL GIVE YOU CAME TO THE READY STATE)
+
+30. CREATION OF POD:
+
+vi pod.yml
+
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+
+name: pod1
+
+labels:
+
+app: zomato
+
+spec:
+
+containers:
+
+- name: cont1
+
+image: httpd
+
+ports:
+
+- containerPort: 80
+
+30. kubectl create -f pod.yml
+
+31. kubectl get pods
+
+32. kubectl get pod -o wide
+
+
+CLUSTER IP:
+
+33. vi service.yml
+
+apiVersion: v1
+
+kind: Service
+
+metadata:
+
+name: my-service
+
+spec:
+
+type: ClusterIP
+
+selector:
+
+app: zomato
+
+ports:
+
+- port: 80
+
+targetPort: 80
+
+-->kubectl create -f service.yml
+
+kubectl get svc
+
+kubectl get pod -o wide
+
+
+NODEPORT:
+
+
+34. vi service.yml
+
+apiVersion: v1
+
+kind: Service
+
+metadata:
+
+name: my-service
+
+spec:
+
+type: NodePort
+
+selector:
+
+app: zomato
+
+ports:
+
+- port: 80
+
+targetPort: 80
+
+nodePort: 30080 # You can specify the nodePort, or Kubernetes will automatically assign one in the range 30000-32767
+
+35. kubectl apply -f service.yml
+
+
+LOADBLANCER:
+
+
+36. vi service.yml
+
+apiVersion: v1
+
+kind: Service
+
+metadata:
+
+name: my-service
+
+spec:
+
+type: LoadBalancer
+
+selector:
+
+app: zomato
+
+ports:
+
+- port: 80
+
+targetPort: 80
+
+37. kubectl apply -f service.yml
+
+38. kops delete cluster --name kopsclus.k8.local --yes ( DELETE THE Auto healing, Auto scaling,Loadbalancer, Instances ,ClusterIp)
+
+
+Creation of the bucket
+
+
+Until we give the command came to the ready state for worker node and master node
+
+
+
+
+
+This is creation of yml file for clusterip
+
+
+
+
+This is for the master
